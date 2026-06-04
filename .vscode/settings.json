@@ -1,4 +1,6 @@
 {
-    "editor.formatOnSave": true,
-    "json.format.keepLines": true,
+  "editor.formatOnSave": true,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
