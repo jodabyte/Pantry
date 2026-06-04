@@ -64,7 +64,9 @@
               "buildTarget": "Pantry:build:production"
             },
             "development": {
-              "buildTarget": "Pantry:build:development"
+              "buildTarget": "Pantry:build:development",
+              "host": "0.0.0.0",
+              "poll": 2000
             }
           },
           "defaultConfiguration": "development"
