@@ -1,4 +1,5 @@
 {
+  "mistral-vibe-code.telemetry.enabled": false,
   "editor.formatOnSave": true,
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -8,5 +9,8 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
 }
