@@ -1,6 +1,7 @@
 {
   "mistral-vibe-code.telemetry.enabled": false,
   "editor.formatOnSave": true,
+  "json.format.keepLines": true,
   "[scss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
