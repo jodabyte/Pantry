@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Shopping List</h2>
+
+<form [formRoot]="editForm">
+  <mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input [formField]="editForm.name" matInput type="text"/>
+      <mat-error>
+        @if (editForm.name().invalid()) {
+          @for (error of editForm.name().errors(); track error) {
+            {{ error.message }}
+          }
+        }
+      </mat-error>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-dialog-close matButton type="button">Cancel</button>
+    <button [disabled]="editForm().invalid()" matButton type="submit">Save</button>
+  </mat-dialog-actions>
+</form>
