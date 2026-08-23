@@ -1,4 +1,10 @@
-<mat-action-list></mat-action-list>
+<mat-action-list>
+  @for (shoppingList of shoppingLists(); track shoppingList.id) {
+    <button mat-list-item>{{ shoppingList.name }}</button>
+  } @empty {
+    <p>No lists yet. Add one!</p>
+  }
+</mat-action-list>
 <button (click)="openOptionsMenu()" aria-label="Create a new list" class="fab-fixed" matFab>
   <mat-icon>add</mat-icon>
 </button>

@@ -16,7 +16,8 @@ import {
   ListDetailsModelSchema
 } from '@features/collection/shopping-list/list-details/list-details.model';
 
-import {failure, ResponseDetails} from '@core/response-details/response-details';
+import {failure, ResponseDetails, success} from '@core/response-details/response-details';
+import {db} from '../../../../shared/db/db';
 
 @Component({
   selector: 'app-list-details',
@@ -51,10 +52,14 @@ export class ListDetails {
   }
 
   private async save(form: ListDetailsModel): Promise<ResponseDetails> {
-    console.log('Save');
-    console.log(form);
-    this.dialogRef.close(form);
-    return failure('serverError', 'Failed to submit form');
+    return db.shoppingLists.add({...form})
+      .then((id) => {
+        this.dialogRef.close(form);
+        return success();
+      })
+      .catch((err) => {
+        return failure(err.message, err)
+      });
   }
 
 }
