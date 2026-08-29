@@ -6,9 +6,9 @@ import {MatActionList, MatListItem} from '@angular/material/list';
 import {OptionsMenu} from '@features/catalog/options-menu/options-menu';
 import {from} from 'rxjs';
 import {liveQuery} from 'dexie';
-import {db} from '../../shared/db/db';
+import {db} from '@shared/db/db';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ShoppingList} from '../../shared/db/db.model';
+import {ShoppingList} from '@shared/db/db.model';
 
 @Component({
   selector: 'app-catalog',

@@ -17,7 +17,7 @@ import {
 } from '@features/collection/shopping-list/list-details/list-details.model';
 
 import {failure, ResponseDetails, success} from '@core/response-details/response-details';
-import {db} from '../../../../shared/db/db';
+import {db} from '@shared/db/db';
 
 @Component({
   selector: 'app-list-details',

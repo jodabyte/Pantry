@@ -4,8 +4,15 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "@core/*": ["./src/app/core/*"],
-      "@features/*": ["./src/app/features/*"],
+      "@core/*": [
+        "./src/app/core/*"
+      ],
+      "@features/*": [
+        "./src/app/features/*"
+      ],
+      "@shared/*": [
+        "./src/app/shared/*"
+      ]
     },
     "rootDir": "src",
     "strict": true,
@@ -26,7 +33,7 @@
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   },
-  "files": [ ],
+  "files": [],
   "references": [
     {
       "path": "./tsconfig.app.json"
