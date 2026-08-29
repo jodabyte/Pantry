@@ -1,6 +1,25 @@
 <mat-action-list>
   @for (shoppingList of shoppingLists(); track shoppingList.id) {
-    <button mat-list-item>{{ shoppingList.name }}</button>
+    <button (click)="onItemSelected(shoppingList.id)" mat-list-item>
+      {{ shoppingList.name }}
+      <button
+        (click)="$event.stopPropagation()"
+        [matMenuTriggerFor]="itemMenu"
+        mat-icon-button
+        matListItemMeta>
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #itemMenu="matMenu">
+        <button (click)="onEditItem(shoppingList.id)" mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button (click)="onDeleteItem(shoppingList.id)" mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </button>
   } @empty {
     <p>No lists yet. Add one!</p>
   }
