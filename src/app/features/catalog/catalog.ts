@@ -31,5 +31,6 @@ export class Catalog {
   }
 
   onDeleteItem(id: number) {
+    this.data.delete(id);
   }
 }

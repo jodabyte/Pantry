@@ -15,4 +15,8 @@ export class CatalogData {
   listAll() {
     return this.shoppingLists();
   }
+
+  async delete(id: number) {
+    await db.shoppingLists.delete(id);
+  }
 }
