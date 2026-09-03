@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {MatBottomSheetRef} from '@angular/material/bottom-sheet';
-import {MatDialog} from '@angular/material/dialog';
 import {MatActionList, MatListItem} from '@angular/material/list';
-import {ListDetails} from '@features/collection/shopping-list/list-details/list-details';
+import {ItemTypes} from '@features/collection/item-details/item-details.model';
+import {ItemDetails} from '@features/collection/item-details/item-details';
 
 @Component({
   selector: 'app-options-menu',
@@ -13,12 +13,12 @@ import {ListDetails} from '@features/collection/shopping-list/list-details/list-
 export class OptionsMenu {
   constructor(
     private bottomSheetRef: MatBottomSheetRef<OptionsMenu>,
-    private wizardDialog: MatDialog,
+    private itemDetails: ItemDetails,
   ) {
   }
 
   createShoppingList(): void {
-    this.wizardDialog.open(ListDetails);
+    this.itemDetails.showDetails(ItemTypes.LIST)
     this.bottomSheetRef.dismiss();
   }
 }

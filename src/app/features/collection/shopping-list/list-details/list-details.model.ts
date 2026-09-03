@@ -5,9 +5,11 @@ export interface ListDetailsModel {
   name: string;
 }
 
-export const listDetailsModel = signal<ListDetailsModel>({
+export const INITIAL_MODEL = {
   name: '',
-});
+};
+
+export const listDetailsModel = signal<ListDetailsModel>({...INITIAL_MODEL});
 
 export const ListDetailsModelSchema: SchemaFn<ListDetailsModel> = (schemaPath) => {
   required(schemaPath.name, {message: 'Name is required'});

@@ -7,6 +7,9 @@ import {OptionsMenu} from '@features/catalog/options-menu/options-menu';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {CatalogData} from '@features/catalog/catalog-data';
 
+import {ItemTypes} from '@features/collection/item-details/item-details.model';
+import {ItemDetails} from '@features/collection/item-details/item-details';
+
 @Component({
   selector: 'app-catalog',
   imports: [MatActionList, MatFabButton, MatIcon, MatListItem, MatIconButton, MatMenu, MatMenuItem, MatMenuTrigger],
@@ -16,8 +19,11 @@ import {CatalogData} from '@features/catalog/catalog-data';
 export class Catalog {
   shoppingLists = computed(() => this.data.listAll());
 
-  constructor(private optionsMenu: MatBottomSheet,
-              private data: CatalogData) {
+  constructor(
+    private optionsMenu: MatBottomSheet,
+    private data: CatalogData,
+    private itemDetails: ItemDetails
+  ) {
   }
 
   openOptionsMenu(): void {
@@ -28,6 +34,7 @@ export class Catalog {
   }
 
   onEditItem(id: number) {
+    this.itemDetails.showDetails(ItemTypes.LIST, {id})
   }
 
   onDeleteItem(id: number) {
