@@ -1,0 +1,7 @@
+<mat-list>
+  @for (item of items(); track item.id) {
+    <mat-list-item>{{ item.name }}</mat-list-item>
+  } @empty {
+    <p>No items in this list yet.</p>
+  }
+</mat-list>
