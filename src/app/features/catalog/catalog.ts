@@ -1,18 +1,30 @@
 import {Component, computed} from '@angular/core';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
-import {MatFabButton, MatIconButton} from '@angular/material/button';
-import {MatIcon} from '@angular/material/icon';
-import {MatActionList, MatListItem} from '@angular/material/list';
 import {OptionsMenu} from '@features/catalog/options-menu/options-menu';
-import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
 import {CatalogData} from '@features/catalog/catalog-data';
 
 import {ItemTypes} from '@features/collection/item-details/item-details.model';
 import {ItemDetails} from '@features/collection/item-details/item-details';
+import {MatList, MatListItem} from '@angular/material/list';
+import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
+import {MatFabButton, MatIconButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {MatRipple} from '@angular/material/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-catalog',
-  imports: [MatActionList, MatFabButton, MatIcon, MatListItem, MatIconButton, MatMenu, MatMenuItem, MatMenuTrigger],
+  imports: [
+    MatList,
+    MatListItem,
+    MatMenuTrigger,
+    MatIconButton,
+    MatIcon,
+    MatMenu,
+    MatMenuItem,
+    MatFabButton,
+    MatRipple
+  ],
   templateUrl: './catalog.html',
   styleUrl: './catalog.scss',
 })
@@ -20,6 +32,7 @@ export class Catalog {
   shoppingLists = computed(() => this.data.listAll());
 
   constructor(
+    private router: Router,
     private optionsMenu: MatBottomSheet,
     private data: CatalogData,
     private itemDetails: ItemDetails
@@ -31,6 +44,7 @@ export class Catalog {
   }
 
   onItemSelected(id: number) {
+    this.router.navigate(['/shopping-list', id]);
   }
 
   onEditItem(id: number) {

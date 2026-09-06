@@ -1,29 +1,33 @@
-<mat-action-list>
-  @for (shoppingList of shoppingLists(); track shoppingList.id) {
-    <button (click)="onItemSelected(shoppingList.id)" mat-list-item>
-      {{ shoppingList.name }}
-      <button
-        (click)="$event.stopPropagation()"
-        [matMenuTriggerFor]="itemMenu"
-        mat-icon-button
-        matListItemMeta>
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #itemMenu="matMenu">
-        <button (click)="onEditItem(shoppingList.id)" mat-menu-item>
-          <mat-icon>edit</mat-icon>
-          <span>Edit</span>
+<mat-list>
+  @for (item of shoppingLists(); track item.id) {
+    <mat-list-item (click)="onItemSelected(item.id)" [matRippleTrigger]="rippleTrigger" matRipple>
+      <div #rippleTrigger>
+        {{ item.name }}
+      </div>
+
+      <div matListItemMeta>
+        <button
+          (click)="$event.stopPropagation()"
+          [matMenuTriggerFor]="itemMenu"
+          mat-icon-button>
+          <mat-icon>more_vert</mat-icon>
         </button>
-        <button (click)="onDeleteItem(shoppingList.id)" mat-menu-item>
-          <mat-icon>delete</mat-icon>
-          <span>Delete</span>
-        </button>
-      </mat-menu>
-    </button>
+        <mat-menu #itemMenu="matMenu">
+          <button (click)="onEditItem(item.id)" mat-menu-item>
+            <mat-icon>edit</mat-icon>
+            <span>Edit</span>
+          </button>
+          <button (click)="onDeleteItem(item.id)" mat-menu-item>
+            <mat-icon>delete</mat-icon>
+            <span>Delete</span>
+          </button>
+        </mat-menu>
+      </div>
+    </mat-list-item>
   } @empty {
     <p>No lists yet. Add one!</p>
   }
-</mat-action-list>
+</mat-list>
 <button (click)="openOptionsMenu()" aria-label="Create a new list" class="fab-fixed" matFab>
   <mat-icon>add</mat-icon>
 </button>
