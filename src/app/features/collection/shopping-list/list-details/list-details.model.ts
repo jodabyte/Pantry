@@ -11,6 +11,10 @@ export const INITIAL_MODEL = {
 
 export const listDetailsModel = signal<ListDetailsModel>({...INITIAL_MODEL});
 
+export const resetToDefaults = () => {
+  listDetailsModel.set({...INITIAL_MODEL});
+};
+
 export const ListDetailsModelSchema: SchemaFn<ListDetailsModel> = (schemaPath) => {
   required(schemaPath.name, {message: 'Name is required'});
 };

@@ -15,7 +15,8 @@ import {
   INITIAL_MODEL,
   listDetailsModel,
   ListDetailsModel,
-  ListDetailsModelSchema
+  ListDetailsModelSchema,
+  resetToDefaults
 } from '@features/collection/shopping-list/list-details/list-details.model';
 
 import {failure, ResponseDetails, success} from '@core/response-details/response-details';
@@ -64,7 +65,11 @@ export class ListDetails implements OnInit {
         if (list) {
           listDetailsModel.set({...list});
         }
-      })
+      });
+  }
+
+  onClose() {
+    resetToDefaults();
   }
 
   private async save(form: ListDetailsModel): Promise<ResponseDetails> {
