@@ -1,11 +1,10 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { Toolbar } from "./core/toolbar/toolbar";
-import { Catalog } from "./features/catalog/catalog";
+import {Component, signal} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
+import {Toolbar} from "@core/toolbar/toolbar";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Toolbar, Catalog],
+  imports: [RouterOutlet, Toolbar],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
