@@ -7,10 +7,11 @@ import {ItemTypes} from '@features/collection/item-details/item-details.model';
 import {ItemDetails} from '@features/collection/item-details/item-details';
 import {MatList, MatListItem} from '@angular/material/list';
 import {MatMenu, MatMenuItem, MatMenuTrigger} from '@angular/material/menu';
-import {MatFabButton, MatIconButton} from '@angular/material/button';
+import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatRipple} from '@angular/material/core';
 import {Router} from '@angular/router';
+import {AddFab} from '@core/add-fab/add-fab';
 
 @Component({
   selector: 'app-catalog',
@@ -22,8 +23,8 @@ import {Router} from '@angular/router';
     MatIcon,
     MatMenu,
     MatMenuItem,
-    MatFabButton,
-    MatRipple
+    MatRipple,
+    AddFab
   ],
   templateUrl: './catalog.html',
   styleUrl: './catalog.scss',
