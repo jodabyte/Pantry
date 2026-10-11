@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, output} from '@angular/core';
 import {MatFabButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 
@@ -12,4 +12,9 @@ import {MatIcon} from "@angular/material/icon";
   styleUrl: './add-fab.scss',
 })
 export class AddFab {
+  onFabClick = output<void>();
+
+  onClick(): void {
+    this.onFabClick.emit();
+  }
 }
