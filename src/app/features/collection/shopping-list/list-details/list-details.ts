@@ -19,8 +19,8 @@ import {
   resetToDefaults
 } from '@features/collection/shopping-list/list-details/list-details.model';
 
-import {failure, ResponseDetails, success} from '@core/response-details/response-details';
-import {db} from '@shared/db/db';
+import {failure, ResponseDetails, success} from '@shared/response-details/response-details';
+import {db} from '@core/db/db';
 import {ListDetailsParams} from '@features/collection/item-details/item-details.model';
 
 @Component({

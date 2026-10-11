@@ -1,7 +1,7 @@
-import {db} from '@shared/db/db';
+import {db} from '@core/db/db';
 import {Service} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ShoppingList} from '@shared/db/db.model';
+import {ShoppingList} from '@core/db/db.model';
 import {from} from 'rxjs';
 import {liveQuery} from 'dexie';
 

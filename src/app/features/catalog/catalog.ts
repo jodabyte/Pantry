@@ -11,7 +11,7 @@ import {MatIconButton} from '@angular/material/button';
 import {MatIcon} from '@angular/material/icon';
 import {MatRipple} from '@angular/material/core';
 import {Router} from '@angular/router';
-import {AddFab} from '@core/add-fab/add-fab';
+import {AddFab} from '@shared/add-fab/add-fab';
 
 @Component({
   selector: 'app-catalog',

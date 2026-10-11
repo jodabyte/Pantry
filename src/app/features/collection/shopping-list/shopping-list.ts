@@ -2,7 +2,7 @@ import {Component, computed, inject, signal} from '@angular/core';
 import {MatList, MatListItem} from '@angular/material/list';
 import {ShoppingListData} from '@features/collection/shopping-list/shopping-list-data';
 import {ActivatedRoute} from '@angular/router';
-import {AddFab} from '@core/add-fab/add-fab';
+import {AddFab} from '@shared/add-fab/add-fab';
 
 @Component({
   selector: 'app-shopping-list',
