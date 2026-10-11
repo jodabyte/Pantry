@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShoppingList } from './shopping-list';
+import { provideDb } from '@core/db/db';
 
 describe('ShoppingList', () => {
   let component: ShoppingList;
@@ -9,6 +10,7 @@ describe('ShoppingList', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [ShoppingList],
+      providers: [provideDb()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ShoppingList);

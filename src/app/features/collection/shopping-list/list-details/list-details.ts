@@ -20,7 +20,7 @@ import {
 } from '@features/collection/shopping-list/list-details/list-details.model';
 
 import {failure, ResponseDetails, success} from '@shared/response-details/response-details';
-import {db} from '@core/db/db';
+import {DB} from '@core/db/db';
 import {ListDetailsParams} from '@features/collection/item-details/item-details.model';
 
 @Component({
@@ -55,12 +55,13 @@ export class ListDetails implements OnInit {
     }
   });
   private params: ListDetailsParams = inject(MAT_DIALOG_DATA);
+  private db = inject(DB);
 
   constructor(private dialogRef: MatDialogRef<ListDetails>) {
   }
 
   ngOnInit() {
-    db.shoppingLists.get(this.params?.id)
+    this.db.shoppingLists.get(this.params?.id)
       .then((list) => {
         if (list) {
           listDetailsModel.set({...list});
@@ -73,7 +74,7 @@ export class ListDetails implements OnInit {
   }
 
   private async save(form: ListDetailsModel): Promise<ResponseDetails> {
-    return db.shoppingLists.put({...form}, this.params?.id)
+    return this.db.shoppingLists.put({...form}, this.params?.id)
       .then((id) => {
         this.dialogRef.close(form);
         return success();

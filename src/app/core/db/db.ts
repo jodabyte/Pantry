@@ -1,15 +1,38 @@
 import Dexie, {type EntityTable} from 'dexie';
-import {ShoppingList, ShoppingListItem} from './db.model';
+import {type EnvironmentProviders, InjectionToken, makeEnvironmentProviders} from '@angular/core';
 
-const db = new Dexie('Pantry') as Dexie & {
+export interface ShoppingList {
+  id: number;
+  name: string;
+}
+
+export interface ShoppingListItem {
+  id: number;
+  shoppingListId: number;
+  name: string;
+}
+
+export type PantryDb = Dexie & {
   shoppingLists: EntityTable<ShoppingList, 'id'>;
   shoppingListItems: EntityTable<ShoppingListItem, 'id'>;
 };
 
-db.version(1)
-  .stores({
-    shoppingLists: '++id',
-    shoppingListItems: '++id, shoppingListId',
-  });
+export const DB = new InjectionToken<PantryDb>('PantryDb');
 
-export {db};
+export function provideDb(): EnvironmentProviders {
+  return makeEnvironmentProviders([
+    {provide: DB, useFactory: createDb},
+  ]);
+}
+
+function createDb(): PantryDb {
+  const db = new Dexie('Pantry') as PantryDb;
+
+  db.version(1)
+    .stores({
+      shoppingLists: '++id',
+      shoppingListItems: '++id, shoppingListId',
+    });
+
+  return db;
+}

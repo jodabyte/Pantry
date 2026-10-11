@@ -1,14 +1,14 @@
-import {Service} from '@angular/core';
+import {inject, Service} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ShoppingListItem} from '@core/db/db.model';
+import {DB, ShoppingListItem} from '@core/db/db';
 import {from} from 'rxjs';
-import {db} from '@core/db/db';
 import {liveQuery} from 'dexie';
 
 @Service()
 export class ShoppingListData {
+  private db = inject(DB);
   data = toSignal<ShoppingListItem[], ShoppingListItem[]>(
-    from(liveQuery(() => db.shoppingListItems.toArray())),
+    from(liveQuery(() => this.db.shoppingListItems.toArray())),
     {initialValue: [] as ShoppingListItem[]}
   );
 

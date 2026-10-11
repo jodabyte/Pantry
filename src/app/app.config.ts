@@ -3,11 +3,13 @@ import {provideRouter} from '@angular/router';
 
 import {routes} from './app.routes';
 import {provideClientHydration} from '@angular/platform-browser';
+import {provideDb} from '@core/db/db';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    provideClientHydration()
+    provideClientHydration(),
+    provideDb()
   ]
 };

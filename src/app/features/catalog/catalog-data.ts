@@ -1,14 +1,14 @@
-import {db} from '@core/db/db';
-import {Service} from '@angular/core';
+import {DB, ShoppingList} from '@core/db/db';
+import {inject, Service} from '@angular/core';
 import {toSignal} from '@angular/core/rxjs-interop';
-import {ShoppingList} from '@core/db/db.model';
 import {from} from 'rxjs';
 import {liveQuery} from 'dexie';
 
 @Service()
 export class CatalogData {
+  private db = inject(DB);
   private shoppingLists = toSignal<ShoppingList[], ShoppingList[]>(
-    from(liveQuery(() => db.shoppingLists.toArray())),
+    from(liveQuery(() => this.db.shoppingLists.toArray())),
     {initialValue: [] as ShoppingList[]}
   );
 
@@ -17,6 +17,6 @@ export class CatalogData {
   }
 
   async delete(id: number) {
-    await db.shoppingLists.delete(id);
+    await this.db.shoppingLists.delete(id);
   }
 }
