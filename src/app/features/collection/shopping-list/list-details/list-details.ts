@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, signal} from '@angular/core';
 import {MatButton} from '@angular/material/button';
 import {
   MAT_DIALOG_DATA,
@@ -13,10 +13,8 @@ import {MatInput} from '@angular/material/input';
 import {form, FormField, FormRoot} from '@angular/forms/signals';
 import {
   INITIAL_MODEL,
-  listDetailsModel,
   ListDetailsModel,
-  ListDetailsModelSchema,
-  resetToDefaults
+  ListDetailsModelSchema
 } from '@features/collection/shopping-list/list-details/list-details.model';
 
 import {failure, ResponseDetails, success} from '@shared/response-details/response-details';
@@ -42,7 +40,8 @@ import {ListDetailsParams} from '@features/collection/item-details/item-details.
   styleUrl: './list-details.scss',
 })
 export class ListDetails implements OnInit {
-  editForm = form(listDetailsModel, ListDetailsModelSchema, {
+  private model = signal<ListDetailsModel>({...INITIAL_MODEL});
+  editForm = form(this.model, ListDetailsModelSchema, {
     submission: {
       action: async (field) => {
         const result = await this.save(field().value());
@@ -62,13 +61,9 @@ export class ListDetails implements OnInit {
     this.db.shoppingLists.get(this.params?.id)
       .then((list) => {
         if (list) {
-          listDetailsModel.set({...list});
+          this.model.set({...list});
         }
       });
-  }
-
-  onClose() {
-    resetToDefaults();
   }
 
   private async save(form: ListDetailsModel): Promise<ResponseDetails> {
