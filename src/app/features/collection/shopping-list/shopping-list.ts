@@ -16,10 +16,11 @@ import {AddFab} from '@shared/add-fab/add-fab';
 })
 export class ShoppingList {
   private listId = signal(0);
-  items = computed(() => this.shoppingListData.listById(this.listId()));
   private route = inject(ActivatedRoute);
+  private shoppingListData = inject(ShoppingListData);
+  items = computed(() => this.shoppingListData.listById(this.listId()));
 
-  constructor(private shoppingListData: ShoppingListData) {
+  constructor() {
     this.route.params.subscribe((params) => {
       this.listId.set(Number(params['id']));
     });

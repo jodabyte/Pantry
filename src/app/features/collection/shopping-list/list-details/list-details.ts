@@ -56,9 +56,7 @@ export class ListDetails implements OnInit {
   });
   private params: ListDetailsParams = inject(MAT_DIALOG_DATA);
   private db = inject(DB);
-
-  constructor(private dialogRef: MatDialogRef<ListDetails>) {
-  }
+  private dialogRef = inject(MatDialogRef<ListDetails>);
 
   ngOnInit() {
     this.db.shoppingLists.get(this.params?.id)

@@ -1,4 +1,4 @@
-import {Component, computed} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
 import {OptionsMenu} from '@features/catalog/options-menu/options-menu';
 import {CatalogData} from '@features/catalog/catalog-data';
@@ -30,15 +30,11 @@ import {AddFab} from '@shared/add-fab/add-fab';
   styleUrl: './catalog.scss',
 })
 export class Catalog {
+  private router = inject(Router);
+  private optionsMenu = inject(MatBottomSheet);
+  private data = inject(CatalogData);
   shoppingLists = computed(() => this.data.listAll());
-
-  constructor(
-    private router: Router,
-    private optionsMenu: MatBottomSheet,
-    private data: CatalogData,
-    private itemDetails: ItemDetails
-  ) {
-  }
+  private itemDetails = inject(ItemDetails);
 
   openOptionsMenu(): void {
     this.optionsMenu.open(OptionsMenu);
