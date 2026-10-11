@@ -1,7 +1,7 @@
 export interface ResponseDetails {
-  ok: boolean,
-  kind: string,
-  message: string
+  ok: boolean;
+  kind: string;
+  message: string;
 }
 
 export const success = (): ResponseDetails => ({ok: true, kind: '', message: ''});
