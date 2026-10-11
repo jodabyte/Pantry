@@ -12,9 +12,9 @@ import {MatIcon} from "@angular/material/icon";
   styleUrl: './add-fab.scss',
 })
 export class AddFab {
-  onFabClick = output<void>();
+  addClick = output<void>();
 
   onClick(): void {
-    this.onFabClick.emit();
+    this.addClick.emit();
   }
 }
