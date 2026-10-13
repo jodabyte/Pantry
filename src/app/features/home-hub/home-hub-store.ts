@@ -5,7 +5,7 @@ import {from} from 'rxjs';
 import {liveQuery} from 'dexie';
 
 @Service()
-export class HomeHubData {
+export class HomeHubStore {
   private db = inject(DB);
   private shoppingLists = toSignal<ShoppingList[], ShoppingList[]>(
     from(liveQuery(() => this.db.shoppingLists.toArray())),
