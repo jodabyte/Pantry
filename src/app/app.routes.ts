@@ -1,7 +1,10 @@
-import { Routes } from '@angular/router';
+import {Routes} from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', loadComponent: () => import('@features/catalog/catalog').then((m) => m.Catalog) },
+  {
+    path: '',
+    loadComponent: () => import('@features/home-hub/home-hub').then((m) => m.HomeHub)
+  },
   {
     path: 'shopping-list/:id',
     loadComponent: () =>

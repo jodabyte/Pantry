@@ -1,7 +1,7 @@
 import {Component, computed, inject} from '@angular/core';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
-import {OptionsMenu} from '@features/catalog/options-menu/options-menu';
-import {CatalogData} from '@features/catalog/catalog-data';
+import {OptionsMenu} from '@features/home-hub/options-menu/options-menu';
+import {HomeHubData} from '@features/home-hub/home-hub-data';
 
 import {ItemTypes} from '@features/collection/item-details/item-details.model';
 import {ItemDetails} from '@features/collection/item-details/item-details';
@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 import {AddFab} from '@shared/add-fab/add-fab';
 
 @Component({
-  selector: 'app-catalog',
+  selector: 'app-home-hub',
   imports: [
     MatList,
     MatListItem,
@@ -26,13 +26,13 @@ import {AddFab} from '@shared/add-fab/add-fab';
     MatRipple,
     AddFab
   ],
-  templateUrl: './catalog.html',
-  styleUrl: './catalog.scss',
+  templateUrl: './home-hub.html',
+  styleUrl: './home-hub.scss',
 })
-export class Catalog {
+export class HomeHub {
   private router = inject(Router);
   private optionsMenu = inject(MatBottomSheet);
-  private data = inject(CatalogData);
+  private data = inject(HomeHubData);
   shoppingLists = computed(() => this.data.listAll());
   private itemDetails = inject(ItemDetails);
 
