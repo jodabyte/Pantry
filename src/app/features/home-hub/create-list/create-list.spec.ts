@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OptionsMenu } from './options-menu';
+import { CreateList } from './create-list';
 
-describe('OptionsMenu', () => {
-  let component: OptionsMenu;
-  let fixture: ComponentFixture<OptionsMenu>;
+describe('CreateList', () => {
+  let component: CreateList;
+  let fixture: ComponentFixture<CreateList>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [OptionsMenu],
+      imports: [CreateList],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(OptionsMenu);
+    fixture = TestBed.createComponent(CreateList);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

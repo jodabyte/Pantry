@@ -1,6 +1,6 @@
 import {Component, computed, inject} from '@angular/core';
 import {MatBottomSheet} from '@angular/material/bottom-sheet';
-import {OptionsMenu} from '@features/home-hub/options-menu/options-menu';
+import {CreateList} from '@features/home-hub/create-list/create-list';
 import {HomeHubStore} from '@features/home-hub/home-hub-store';
 
 import {ItemTypes} from '@features/collection/item-details/item-details.model';
@@ -31,13 +31,13 @@ import {AddFab} from '@shared/add-fab/add-fab';
 })
 export class HomeHub {
   private router = inject(Router);
-  private optionsMenu = inject(MatBottomSheet);
-  private data = inject(HomeHubStore);
-  shoppingLists = computed(() => this.data.listAll());
+  private bottomSheet = inject(MatBottomSheet);
+  private store = inject(HomeHubStore);
+  shoppingLists = computed(() => this.store.listAll());
   private itemDetails = inject(ItemDetails);
 
-  openOptionsMenu(): void {
-    this.optionsMenu.open(OptionsMenu);
+  createList(): void {
+    this.bottomSheet.open(CreateList);
   }
 
   onItemSelected(id: number) {
@@ -49,6 +49,6 @@ export class HomeHub {
   }
 
   onDeleteItem(id: number) {
-    this.data.delete(id);
+    this.store.delete(id);
   }
 }

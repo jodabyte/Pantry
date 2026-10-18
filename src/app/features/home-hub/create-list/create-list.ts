@@ -5,13 +5,13 @@ import {ItemTypes} from '@features/collection/item-details/item-details.model';
 import {ItemDetails} from '@features/collection/item-details/item-details';
 
 @Component({
-  selector: 'app-options-menu',
+  selector: 'app-create-list',
   imports: [MatActionList, MatListItem],
-  templateUrl: './options-menu.html',
-  styleUrl: './options-menu.scss',
+  templateUrl: './create-list.html',
+  styleUrl: './create-list.scss',
 })
-export class OptionsMenu {
-  private bottomSheetRef = inject(MatBottomSheetRef<OptionsMenu>);
+export class CreateList {
+  private bottomSheetRef = inject(MatBottomSheetRef<CreateList>);
   private itemDetails = inject(ItemDetails);
 
   createShoppingList(): void {
